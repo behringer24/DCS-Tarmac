@@ -272,6 +272,7 @@ function Unit:getNumber() return self.index end
 function Unit:isExist() return self.exists end
 function Unit:isActive() return self.exists and self.group.active end
 function Unit:inAir() return self.airborne == true end
+function Unit:getVelocity() checkAlive(self) return self.velocity or point3(0, 0, 0) end
 function Unit:hasAttribute(name) return self.attributes[name] == true end
 
 function Unit:getDesc()

@@ -408,6 +408,27 @@ function dcs.addAirbase(name, coalitionId, x, z)
     return airbase
 end
 
+-- Tests set the spots: airbase.parking = { { Term_Index = 5, Term_Type = 40,
+-- vTerminalPos = { x = 0, y = 0, z = 0 }, occupied = true }, ... }
+function Airbase:getParking(available)
+    local spots = {}
+    for _, spot in ipairs(self.parking or {}) do
+        if not (available and spot.occupied) then
+            spots[#spots + 1] = deepCopy(spot)
+        end
+    end
+    return spots
+end
+
+function world.getAirbases()
+    local list = {}
+    for _, airbase in pairs(airbasesByName) do
+        list[#list + 1] = airbase
+    end
+    table.sort(list, function(a, b) return a.name < b.name end)
+    return list
+end
+
 -- Scenery -------------------------------------------------------------------
 
 SceneryObject.__index = SceneryObject

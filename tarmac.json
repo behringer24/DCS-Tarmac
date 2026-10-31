@@ -1,0 +1,15 @@
+{
+  "name": "tarmac",
+  "entry": "tarmac",
+  "sources": ["src"],
+  "output": "dist/tarmac.lua",
+  "banner": [
+    "DCS Tarmac - scripting foundation for DCS World missions",
+    "https://github.com/behringer24/DCS-Tarmac - GPL-3.0"
+  ],
+  "test": {
+    "dir": "test",
+    "setup": ["testing/dcs_mock.lua", "testing/harness.lua", "testing/fixture.lua"],
+    "globals": ["tarmac"]
+  }
+}
